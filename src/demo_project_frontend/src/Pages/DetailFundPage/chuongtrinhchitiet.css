@@ -1,0 +1,60 @@
+.detail-fund-page {
+  line-height: 1.6;
+}
+
+.detail-fund__container {
+
+}
+
+.detail-fund__id {
+
+}
+
+.detail-fund__wrapper-body {
+  display: flex;
+
+}
+
+
+.detail-fund__name {
+
+}
+
+.detail-fund__type-project {
+
+}
+
+
+.detail-fund__body {
+  width: 70%;
+  padding-right: 60px;
+  text-align: justify;
+}
+
+.detail-fund__body-short-desc {
+
+}
+
+.detail-fund__body-full {
+
+}
+
+.detail-fund__body-full-detail {
+
+}
+
+.detail-fund__body-full-heading {
+
+}
+
+.detail-fund__body-full-img {
+
+}
+
+.detail-fund__body-full-img > img {
+  width: 100%;;
+}
+
+.detail-fund__sidebar {
+  width: 30%;
+}

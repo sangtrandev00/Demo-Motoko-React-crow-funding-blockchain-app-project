@@ -1,0 +1,33 @@
+/* Detail donate page & disburement detail page css -- in common styles*/
+
+.detail-disbursement-page,
+.detail-donate-page {
+    padding: 60px;
+}
+
+.detail-donate__heading {
+
+}
+
+.detail-donate__heading,
+.detail-disbursement__heading,
+.detail-donate__desc-heading {
+    margin: 20px 0px;
+}
+
+.detail-donate__history-item,
+.detail-disbursement__history-item {
+    margin: 8px 0px;
+}
+
+.btn-detail-page {
+    margin: 0px 8px;
+}
+
+.btn-detail-page__money {
+
+}
+
+.btn-detail-page__status {
+
+}
