@@ -14,8 +14,8 @@ SearchRow.propTypes = {};
 function SearchRow(props) {
   // let query = useQuery();
 
-  const { FundID, TimeDonate, DonateMoney, Name, NameProject, FundProjectId } = props;
-  console.log(FundProjectId);
+  const { FundID, TimeDonate, DonateMoney, Name, NameProject, FundProjectId, TypeProject } = props;
+  // console.log(FundProjectId);
   const linkUrlParamsFundId = `/history-detail-donation-page?name=${FundID}`;
   const linkUrlParamsProjectID = `/fund-detail-page?name=${FundProjectId}`;
 
@@ -35,17 +35,8 @@ function SearchRow(props) {
             {NameProject} - {FundProjectId}
           </Link>
         </div>
-
-        {/* <button
-          class="multi-table__cell-btn "
-          data-bs-toggle="collapse"
-          data-bs-target="#collapseRow"
-          aria-expanded="false"
-          aria-controls="collapseRow"
-        >
-          <i class="multi-table__cell-icon fa-solid fa-chevron-down"></i>
-        </button> */}
       </td>
+      <td class="multi-table__cell multi-table__cell-body">{TypeProject}</td>
     </tr>
   );
 }

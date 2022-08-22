@@ -56,13 +56,16 @@ function HistoryDonatePage(props) {
                   <p className="">Bản tóm tắt</p>
                   <p className="">Số tiền: {donation.DonateMoney} VND</p>
                   <p className="">
-                    Giao dịch này lần đầu tiên được phát vào hệ thống Quỹ từ thiện vào ngày 28 tháng
-                    7 năm 2022 lúc 10:05 PM GMT + 7. Giao dịch hiện đã thành công. Tìm hiểu thêm về
-                    cách giao dịch hoạt động này
+                    Giao dịch này lần đầu tiên được phát vào hệ thống Quỹ từ thiện vào ngày{' '}
+                    {donation.TimeDonate
+                      ? donation.TimeDonate
+                      : ` 28 tháng
+                    7 năm 2022 lúc 10:05 PM GMT + 7`}
+                    . Giao dịch hiện đã thành công. Tìm hiểu thêm về cách giao dịch hoạt động này
                   </p>
                 </div>
                 <div class="coi l-4 c-12">
-                  <button className="btn-detail-page btn-detail-page__money">5,000,000</button>
+                  <button className="btn-detail-page btn-detail-page__money">Trạng thái</button>
                   <button className="btn-detail-page btn-detail-page__status">Thành công</button>
                 </div>
               </div>
@@ -72,7 +75,7 @@ function HistoryDonatePage(props) {
             <div class="grid wide">
               <div class="row">
                 <div class="col l-5 c-5">
-                  <p className="detail-donate__history-item">Mã giao dịch</p>
+                  <p className="detail-donate__history-item">Mã giao dịch đóng góp</p>
                   <p className="detail-donate__history-item">Trạng thái</p>
                   <p className="detail-donate__history-item">Thời gian đã nhận</p>
                   <p className="detail-donate__history-item">Tên nhà hảo tâm</p>
@@ -82,20 +85,29 @@ function HistoryDonatePage(props) {
                   <p className="detail-donate__history-item">Nội dung lời nhắn</p>
                 </div>
                 <div class="col l-7 c-7">
-                  <p className="detail-donate__history-item">{donation.FundId}</p>
+                  <p className="detail-donate__history-item">
+                    {donation.FundId ? donation.FundId : 'Empty Fund ID Name'}
+                  </p>
                   <p className="detail-donate__history-item">Đã thành công</p>
                   <p className="detail-donate__history-item">
-                    {donation.TimeDonate} -- 2022-07-28 22:05
+                    {donation.TimeDonate ? donation.TimeDonate : 'Sample date: 2022-07-28 22:05'}
                   </p>
-                  <p className="detail-donate__history-item">{donation.Name}</p>
-                  <p className="detail-donate__history-item">{donation.DonateMoney} VND</p>
-                  <p className="detail-donate__history-item">Chuyển khoản</p>
-                  <p className="detail-donate__history-item">{donation.NameProject}</p>
                   <p className="detail-donate__history-item">
-                    {donation.Message}
-                    Sample: --Chúc các em sức khỏe, có đủ nghị lực vượt qua nghịch cảnh này, hi vọng
+                    {donation.Name ? donation.Name : 'Empty Donor Name'}{' '}
+                  </p>
+                  <p className="detail-donate__history-item">
+                    {donation.DonateMoney ? donation.DonateMoney : 'Empty donation.DonateMoney'} VND
+                  </p>
+                  <p className="detail-donate__history-item">Chuyển khoản</p>
+                  <p className="detail-donate__history-item">
+                    {donation.NameProject ? donation.NameProject : 'Empty name Project'}
+                  </p>
+                  <p className="detail-donate__history-item">
+                    {donation.Message
+                      ? donation.Message
+                      : `Sample: Chúc các em sức khỏe, có đủ nghị lực vượt qua nghịch cảnh này, hi vọng
                     một ngày nào đó các em có thể vươn lên trở thành một người có giá trị cho xã
-                    hội, và giúp đỡ những người có hoàn cảnh khó khăn như tụi em hiện tại. Thân
+                    hội, và giúp đỡ những người có hoàn cảnh khó khăn như tụi em hiện tại. Thân`}
                   </p>
                 </div>
               </div>

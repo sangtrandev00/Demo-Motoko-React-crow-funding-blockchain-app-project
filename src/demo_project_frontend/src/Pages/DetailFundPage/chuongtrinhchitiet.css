@@ -52,9 +52,18 @@
 }
 
 .detail-fund__body-full-img > img {
-  width: 100%;;
+  width: 100%;
 }
 
 .detail-fund__sidebar {
   width: 30%;
+}
+
+.detail-fund__sidebar span {
+  margin-right: 8px;
+}
+
+.detail-fund__sidebar .event_left span.day-left {
+  color: red;
+  font-size: 20px;
 }

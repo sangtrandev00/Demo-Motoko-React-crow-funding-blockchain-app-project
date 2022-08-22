@@ -31,6 +31,7 @@ import React from 'react';
 import HistoryDonatePage from './Pages/HistoryDonatePage';
 import DetailFundPage from './Pages/DetailFundPage';
 import DisbursementPage from './Pages/DisbursementPage';
+import { useEffect } from 'react';
 
 // import "./assets/css/style.css";
 // import "./assets/css/style.css";
@@ -41,6 +42,10 @@ function App() {
 
   function handleOnDonateSubmit() {}
   // const path_1 = `/introduction-page`;
+  // useEffect(() => {
+  //   window.scrollTo(0, 200);
+  // }, []);
+
   return (
     <div className="App">
       <div className="wrapper">
@@ -53,9 +58,9 @@ function App() {
             component={DonationPage}
           />
           <Route path="/search-page" component={SearchPage} />
-          <Route path="/history-donate-page" component={HistoryDonatePage} />
+          <Route path="/history-donate-page" component={DetailFundPage} />
           <Route path="/history-detail-donation-page" component={HistoryDonatePage} />
-          <Route path="/disbursement-detail-page " component={DisbursementPage} />
+          <Route path="/disbursement-detail-page" component={DisbursementPage} />
           <Route path="/fund-detail-page" component={DetailFundPage} />
           <Route path="/" component={HomePage} exact={false} />
           {/* <Route component={NotFound} /> */}

@@ -5,20 +5,36 @@ import Header from '../../components/Header/index';
 import HeaderContact from '../../components/HeaderContact/index';
 import Footer from '../../components/Footer/index';
 import { useState, useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, Link } from 'react-router-dom';
 import { demo_project_backend } from '../../../../declarations/demo_project_backend';
 
 DetailFundPage.propTypes = {};
 
+function calculateDaysLeft(DateEnd) {
+  const present_date = new Date();
+  const end_date = new Date(DateEnd);
+  var Difference_In_Time = end_date.getTime() - present_date.getTime();
+  var Difference_In_Days = Difference_In_Time / (1000 * 3600 * 24);
+  return Math.round(Difference_In_Days);
+}
+
 function DetailFundPage(props) {
-  // Row code, haven't fixed yet!!!
   const [fundProject, setFundProject] = useState({});
+  const LinkUrlDisburseMentPage = `/disbursement-detail-page?name=${fundProject.ProjectID}`;
+  const daysLeft = calculateDaysLeft(fundProject.DateEnd);
 
   const ProjectParams = useLocation();
 
   const idFundProject = ProjectParams.search.substring(6);
 
-  console.log(idFundProject);
+  const progressPercent = (fundProject.CurrentMoney / fundProject.TargetMoney) * 100;
+
+  const completeBtnStyle = {
+    backgroundColor: progressPercent === 100 && '#f26f21',
+    color: progressPercent === 100 && '#fff',
+    cursor: progressPercent === 100 && 'not-allowed',
+  };
+
   useEffect(() => {
     async function showDetailFundProject() {
       const fundProjectObject = await demo_project_backend.view_fund_project(idFundProject);
@@ -111,29 +127,40 @@ function DetailFundPage(props) {
             <div class="detail-fund__sidebar">
               <p>
                 <span class="event_left">
-                  <i class="material-icons">access_time</i>30 ngày
+                  <span>Ngày còn lại:</span>
+                  <i class="material-icons"></i>
+                  {daysLeft >= 0 ? (
+                    <span className="day-left">{daysLeft} ngày</span>
+                  ) : (
+                    <span>Dự án đã kết thúc</span>
+                  )}
                 </span>
+              </p>
+              <p>
                 <span class="event_right">
-                  <i class="material-icons">location_on</i>TP.Hồ Chí Minh
+                  <span>Địa điểm:</span>
+                  <i class="material-icons"></i>
+                  {fundProject.Location}
                 </span>
               </p>
               <div class="progress-text">
-                <p class="progress-top">50%</p>
+                <h3 class="progress-text__heading">Tiến độ dự án: </h3>
+                <p class="progress-top">{progressPercent}%</p>
                 <div class="progress">
                   <div
                     class="progress-bar"
                     role="progressbar"
-                    aria-valuenow="50"
+                    aria-valuenow={fundProject.CurrentMoney}
                     aria-valuemin="0"
-                    aria-valuemax="100"
-                    style={{ width: '50%' }}
+                    aria-valuemax={fundProject.TargetMoney}
+                    style={{ width: `${progressPercent}%` }}
                   ></div>
                 </div>
                 <p class="progress-left">
-                  Đã góp: <span>5.000.000</span>
+                  Đã góp: <span>{fundProject.CurrentMoney}</span>
                 </p>
                 <p class="progress-right">
-                  Mục tiêu: <span>10.000.000</span>
+                  Mục tiêu: <span>{fundProject.TargetMoney}</span>
                 </p>
               </div>
               <h2 class="borderes">
@@ -142,10 +169,11 @@ function DetailFundPage(props) {
               <div class="finance">
                 <h2 class="finance-title">BÁO CÁO TÀI CHÍNH</h2>
                 <div class="finance-title__desc">
-                  <a href="search-page.html">* Kiểm tra đóng góp</a>
+                  {/*  */}
+                  <Link to="/search-page">* Kiểm tra đóng góp</Link>
                 </div>
                 <div class="finance-title__desc">
-                  <a href="chitietgiaingan.html">* Kiểm tra giải ngân</a>
+                  <Link to={LinkUrlDisburseMentPage}>* Kiểm tra giải ngân</Link>
                 </div>
               </div>
             </div>

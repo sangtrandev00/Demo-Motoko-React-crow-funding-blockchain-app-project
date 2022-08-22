@@ -21,9 +21,9 @@ function FundProjectItem(props) {
       <div class="item">
         <img src={imgUrl} alt="" />
         <div class="for_padding">
-          <h2 class="name_event">
+          <Link to="/fund-detail-page" class="name_event">
             Kỳ {fundId} : {fundName}
-          </h2>
+          </Link>
           <p>
             <span class="event_left">
               <i class="material-icons">access_time</i>
